@@ -2,7 +2,7 @@ const GameList = (argument = "") => {
   console.log("Game List", argument);
 
   const preparePage = () => {
-    cleanedArgument = argument.replace(/\s+/g, "-");
+    let cleanedArgument = argument.replace(/\s+/g, "-");
     let articles = "";
 
     const fetchList = (url, argument) => {
@@ -26,7 +26,7 @@ const GameList = (argument = "") => {
           document.querySelector(".game-list .articles").innerHTML = articles;
         });
     };
-
+    console.log("utilise url");
     fetchList("https://api.rawg.io/api/games", cleanedArgument);
   };
 
@@ -36,6 +36,7 @@ const GameList = (argument = "") => {
         <div class="articles">Hey, this page is a GameList template, about : ${argument}</div>
       </section>
     `;
+    preparePage();
   };
 
   render();

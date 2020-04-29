@@ -86,6 +86,30 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./src/js/GameDetail.js":
+/*!******************************!*\
+  !*** ./src/js/GameDetail.js ***!
+  \******************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\nconst GameDetail = (argument = \"\") => {\n  console.log(\"Game Detail\", argument);\n\n  const preparePage = () => {\n    let cleanedArgument = argument.replace(/\\s+/g, \"-\");\n\n    let articleContent = \"\";\n\n    const fetchGame = (url, argument) => {\n      let finalURL = url + argument;\n\n      fetch(`${finalURL}`)\n        .then((response) => response.json())\n        .then((response) => {\n          let { name, released, description } = response;\n\n          let articleDOM = document.querySelector(\".game-detail .article\");\n\n          articleDOM.querySelector(\"h1.title\").innerHTML = name;\n          articleDOM.querySelector(\"p.release-date span\").innerHTML = released;\n          articleDOM.querySelector(\"p.description\").innerHTML = description;\n        });\n    };\n\n    fetchGame(\"https://api.rawg.io/api/games/\", cleanedArgument);\n  };\n\n  const render = () => {\n    pageContent.innerHTML = `\n      <section class=\"game-detail\">\n        <div class=\"article\">\n          <h1 class=\"title\"></h1>\n          <p class=\"release-date\">Release date : <span></span></p>\n          <p class=\"description\"></p>\n        </div>\n      </section>\n    `;\n\n    preparePage();\n  };\n\n  render();\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (GameDetail);\n\n\n//# sourceURL=webpack:///./src/js/GameDetail.js?");
+
+/***/ }),
+
+/***/ "./src/js/GameList.js":
+/*!****************************!*\
+  !*** ./src/js/GameList.js ***!
+  \****************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\nconst GameList = (argument = \"\") => {\n  console.log(\"Game List\", argument);\n\n  const preparePage = () => {\n    let cleanedArgument = argument.replace(/\\s+/g, \"-\");\n    let articles = \"\";\n\n    const fetchList = (url, argument) => {\n      let finalURL = url;\n      if (argument) {\n        finalURL = url + \"?search=\" + argument;\n      }\n\n      fetch(`${finalURL}`)\n        .then((response) => response.json())\n        .then((response) => {\n          response.results.forEach((article) => {\n            articles += `\n                  <div class=\"cardGame\">\n                    <h1>${article.name}</h1>\n                    <h2>${article.released}</h2>\n                    <a href = \"#gamedetail/${article.id}\">${article.id}</a>\n                  </div>\n                `;\n          });\n          document.querySelector(\".game-list .articles\").innerHTML = articles;\n        });\n    };\n    console.log(\"utilise url\");\n    fetchList(\"https://api.rawg.io/api/games\", cleanedArgument);\n  };\n\n  const render = () => {\n    pageContent.innerHTML = `\n      <section class=\"game-list\">\n        <div class=\"articles\">Hey, this page is a GameList template, about : ${argument}</div>\n      </section>\n    `;\n    preparePage();\n  };\n\n  render();\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (GameList);\n\n\n//# sourceURL=webpack:///./src/js/GameList.js?");
+
+/***/ }),
+
 /***/ "./src/js/Home.js":
 /*!************************!*\
   !*** ./src/js/Home.js ***!
@@ -94,31 +118,7 @@
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\nconst Home = (argument = \"\") => {\n  console.log(\"Page Home\", argument);\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (Home);\n\n\n//# sourceURL=webpack:///./src/js/Home.js?");
-
-/***/ }),
-
-/***/ "./src/js/PageDetail.js":
-/*!******************************!*\
-  !*** ./src/js/PageDetail.js ***!
-  \******************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\nconst PageDetail = (argument = \"\") => {\n  console.log(\"Page Detail\", argument);\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (PageDetail);\n\n\n//# sourceURL=webpack:///./src/js/PageDetail.js?");
-
-/***/ }),
-
-/***/ "./src/js/PageList.js":
-/*!****************************!*\
-  !*** ./src/js/PageList.js ***!
-  \****************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\nconst PageList = (argument = \"\") => {\n  console.log(\"Page List\", argument);\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (PageList);\n\n\n//# sourceURL=webpack:///./src/js/PageList.js?");
+eval("__webpack_require__.r(__webpack_exports__);\nconst URL_MOST_WANTED_GAMES =\n  \"https://api.rawg.io/api/games?dates=2020-01-01,2021-10-10&ordering=-added\";\n// const URL = \"https://api.rawg.io/api/games\";\n\nconst Home = (argument = \"\") => {\n  console.log(\"Page Home\", argument);\n  // <h1 style=\"color: red;\">Le menu stp</h1>;\n\n  const preparePage = () => {\n    // let cleanedArgument = argument.replace(/\\s+/g, \"-\");\n    let cleanedArgument = \"?dates=2020-01-01,2021-10-10&ordering=-added\";\n    let articles = \"\";\n\n    const fetchList = (url, argument) => {\n      let finalURL = url;\n      // if (argument) {\n      // finalURL = URL + \"?search=\" + argument;\n      // }\n\n      fetch(`${finalURL}`)\n        .then((response) => response.json())\n        .then((response) => {\n          console.log(response);\n          response.results.forEach((article) => {\n            articles += `\n                  <div class=\"cardGame\">\n                    <h1>${article.name}</h1>\n                    <h2>${article.released}</h2>\n                    <a href = \"#gamedetail/${article.id}\">${article.id}</a>\n                  </div>\n                `;\n          });\n          document.querySelector(\".game-list .articles\").innerHTML = articles;\n        });\n    };\n    fetchList(URL_MOST_WANTED_GAMES, cleanedArgument);\n  };\n\n  const render = () => {\n    pageContent.innerHTML = `\n      <section class=\"game-list\">\n        <div class=\"articles\">Hey, this page is a GameList template, about : ${argument}</div>\n      </section>\n    `;\n    preparePage();\n  };\n\n  render();\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (Home);\n\n\n//# sourceURL=webpack:///./src/js/Home.js?");
 
 /***/ }),
 
@@ -138,11 +138,11 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _scs
 /*!**************************!*\
   !*** ./src/js/routes.js ***!
   \**************************/
-/*! exports provided: default */
+/*! exports provided: routes, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _Home__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Home */ \"./src/js/Home.js\");\n/* harmony import */ var _PageDetail__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PageDetail */ \"./src/js/PageDetail.js\");\n/* harmony import */ var _PageList__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./PageList */ \"./src/js/PageList.js\");\n\n\n\n\nconst routes = {\n  \"\": _Home__WEBPACK_IMPORTED_MODULE_0__[\"default\"],\n  \"pagelist\": _PageList__WEBPACK_IMPORTED_MODULE_2__[\"default\"],\n  \"pagedetail\": _PageDetail__WEBPACK_IMPORTED_MODULE_1__[\"default\"],\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (routes);\n\n\n//# sourceURL=webpack:///./src/js/routes.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"routes\", function() { return routes; });\n/* harmony import */ var _Home__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Home */ \"./src/js/Home.js\");\n/* harmony import */ var _GameDetail__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./GameDetail */ \"./src/js/GameDetail.js\");\n/* harmony import */ var _GameList__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./GameList */ \"./src/js/GameList.js\");\n\n\n\nconst routes = {\n  \"\": _Home__WEBPACK_IMPORTED_MODULE_0__[\"default\"],\n  gamelist: _GameList__WEBPACK_IMPORTED_MODULE_2__[\"default\"],\n  gamedetail: _GameDetail__WEBPACK_IMPORTED_MODULE_1__[\"default\"],\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (routes);\n\n\n//# sourceURL=webpack:///./src/js/routes.js?");
 
 /***/ }),
 

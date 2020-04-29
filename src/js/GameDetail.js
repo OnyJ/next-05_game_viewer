@@ -2,7 +2,7 @@ const GameDetail = (argument = "") => {
   console.log("Game Detail", argument);
 
   const preparePage = () => {
-    cleanedArgument = argument.replace(/\s+/g, "-");
+    let cleanedArgument = argument.replace(/\s+/g, "-");
 
     let articleContent = "";
 
