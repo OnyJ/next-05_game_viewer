@@ -1,5 +1,5 @@
 const GameList = (argument = "") => {
-  console.log("Page List", argument);
+  console.log("Game List", argument);
 
   const preparePage = () => {
     cleanedArgument = argument.replace(/\s+/g, "-");
