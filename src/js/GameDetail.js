@@ -14,7 +14,7 @@ const GameDetail = (argument = "") => {
         .then((response) => {
           let { name, released, description } = response;
 
-          let articleDOM = document.querySelector(".page-detail .article");
+          let articleDOM = document.querySelector(".game-detail .article");
 
           articleDOM.querySelector("h1.title").innerHTML = name;
           articleDOM.querySelector("p.release-date span").innerHTML = released;
@@ -27,7 +27,7 @@ const GameDetail = (argument = "") => {
 
   const render = () => {
     pageContent.innerHTML = `
-      <section class="page-detail">
+      <section class="game-detail">
         <div class="article">
           <h1 class="title"></h1>
           <p class="release-date">Release date : <span></span></p>

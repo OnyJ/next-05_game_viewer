@@ -23,7 +23,7 @@ const GameList = (argument = "") => {
                   </div>
                 `;
           });
-          document.querySelector(".page-list .articles").innerHTML = articles;
+          document.querySelector(".game-list .articles").innerHTML = articles;
         });
     };
 
@@ -32,7 +32,7 @@ const GameList = (argument = "") => {
 
   const render = () => {
     pageContent.innerHTML = `
-      <section class="page-list">
+      <section class="game-list">
         <div class="articles">Hey, this page is a GameList template, about : ${argument}</div>
       </section>
     `;
