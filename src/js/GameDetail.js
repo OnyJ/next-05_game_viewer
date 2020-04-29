@@ -1,4 +1,4 @@
-const PageDetail = (argument = "") => {
+const GameDetail = (argument = "") => {
   console.log("Page Detail", argument);
 
   const preparePage = () => {
@@ -42,4 +42,4 @@ const PageDetail = (argument = "") => {
   render();
 };
 
-export default PageDetail;
+export default GameDetail;

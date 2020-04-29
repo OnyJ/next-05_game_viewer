@@ -1,11 +1,11 @@
 import Home from "./Home";
-import PageDetail from "./PageDetail";
+import GameDetail from "./GameDetail";
 import GameList from "./GameList";
 
 const routes = {
   "": Home,
   gamelist: GameList,
-  pagedetail: PageDetail,
+  gamedetail: GameDetail,
 };
 
 export default routes;

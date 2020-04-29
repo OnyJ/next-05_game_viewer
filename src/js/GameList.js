@@ -19,7 +19,7 @@ const GameList = (argument = "") => {
                   <div class="cardGame">
                     <h1>${article.name}</h1>
                     <h2>${article.released}</h2>
-                    <a href = "#pagedetail/${article.id}">${article.id}</a>
+                    <a href = "#gamedetail/${article.id}">${article.id}</a>
                   </div>
                 `;
           });
