@@ -1,11 +1,11 @@
+const URL_SEARCH = "https://api.rawg.io/api/games?search=";
 const URL_MOST_WANTED_GAMES =
   "https://api.rawg.io/api/games?dates=2020-01-01,2021-10-10&ordering=-added";
-const SEARCH_URL = "https://api.rawg.io/api/games?search=";
 
 const Home = (argument = "") => {
   console.log("Page Home", argument);
 
-  const doFetch = (finalURL) => {
+  const preparePage = (finalURL) => {
     let articles = "";
 
     fetch(`${finalURL}`)
@@ -26,27 +26,10 @@ const Home = (argument = "") => {
       });
   };
 
-  const preparePage = () => {
-    // let cleanedArgument = argument.replace(/\s+/g, "-");
-    // let cleanedArgument = "?dates=2020-01-01,2021-10-10&ordering=-added";
-    let articles = "";
-
-    const fetchList = (url, argument) => {
-      let finalURL = url;
-      // if (argument != "") {
-      // finalURL = URL + "?search=" + argument;
-      // }
-      doFetch(finalURL);
-    };
-    fetchList(URL_MOST_WANTED_GAMES);
-  };
-
   const searchGame = () => {
-    console.log("searching");
     let argument = document.getElementsByTagName("input")[0].value;
     let cleanedArgument = argument.replace(/\s+/g, "-");
-    console.log(SEARCH_URL + cleanedArgument);
-    doFetch(SEARCH_URL + cleanedArgument);
+    preparePage(URL_SEARCH + cleanedArgument);
   };
 
   const render = () => {
@@ -61,12 +44,11 @@ const Home = (argument = "") => {
         <div class="articles">Hey, this page is a GameList template, about : ${argument}</div>
       </section>
     `;
-    preparePage();
+    preparePage(URL_MOST_WANTED_GAMES);
     document
       .getElementById("submit-search")
       .addEventListener("click", searchGame);
   };
-
   render();
 };
 
