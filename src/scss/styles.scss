@@ -6,13 +6,12 @@ $red: rgb(255, 20, 20);
 }
 
 p {
-  color: $red;
   font-family: "Big Noodles";
 }
 
 body {
-  background-image: url("../img/js.png");
-  background-size: contain;
-  width: 100vw;
-  height: 100vh;
+  // background-image: url("../img/js.png");
+  // background-size: contain;
+  width: 98vw;
+  height: 98vh;
 }
