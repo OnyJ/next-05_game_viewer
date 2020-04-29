@@ -1,4 +1,4 @@
-const PageList = (argument = "") => {
+const GameList = (argument = "") => {
   console.log("Page List", argument);
 
   const preparePage = () => {
@@ -33,7 +33,7 @@ const PageList = (argument = "") => {
   const render = () => {
     pageContent.innerHTML = `
       <section class="page-list">
-        <div class="articles">Hey, this page is a PageList template, about : ${argument}</div>
+        <div class="articles">Hey, this page is a GameList template, about : ${argument}</div>
       </section>
     `;
   };
@@ -41,4 +41,4 @@ const PageList = (argument = "") => {
   render();
 };
 
-export default PageList;
+export default GameList;

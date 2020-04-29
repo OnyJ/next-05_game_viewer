@@ -1,5 +1,5 @@
 import "../scss/styles.scss";
-import routes from './routes'
+import routes from "./routes";
 
 let pageArgument;
 

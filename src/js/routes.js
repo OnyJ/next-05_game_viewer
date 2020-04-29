@@ -1,10 +1,10 @@
 import Home from "./Home";
 import PageDetail from "./PageDetail";
-import PageList from "./PageList";
+import GameList from "./GameList";
 
 const routes = {
   "": Home,
-  pagelist: PageList,
+  gamelist: GameList,
   pagedetail: PageDetail,
 };
 
