@@ -47,9 +47,12 @@ const Home = (argument = "") => {
           if (selectByPlatform(article.platforms)) {
             articles += `
               <div class="cardGame">
-                <h1>${article.name}</h1>
-                <h2>${article.released}</h2>
-                <a href = "#gamedetail/${article.id}">${article.id}</a>
+                <img src="${article.background_image}" alt=""  />
+                <div class="card-text">
+                  <h1>${article.name}</h1>
+                  <h2 class="date">${article.released}</h2>
+                  <a href = "#gamedetail/${article.id}">${article.id}</a>
+                </div>
               </div>
             `;
           }
@@ -90,3 +93,6 @@ const Home = (argument = "") => {
 };
 
 export default Home;
+
+// nine per nine display
+// fetchList(`https://api.rawg.io/api/games?dates=${time},${future_time}&ordering=-added&page_size=27`);

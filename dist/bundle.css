@@ -6,7 +6,95 @@ p {
   font-family: "Big Noodles";
 }
 
+h1 {
+  font-family: "Monda", sans-serif;
+  font-size: 160%;
+}
+
 body {
+  background-color: #1a3248;
   width: 98vw;
   height: 98vh;
+  color: white;
+}
+
+.topbar {
+  display: inline;
+}
+
+.main-title {
+  max-width: 30%;
+  font-size: 3em;
+  font-family: "Orbitron", sans-serif;
+  letter-spacing: 3.5px;
+  color: white;
+  text-decoration: none;
+}
+.main-title :hover {
+  color: #828d96;
+}
+
+.search-bar {
+  background-color: #434343;
+  width: 50%;
+  right: 0px;
+  position: absolute;
+  border-radius: 20px;
+}
+.search-bar input[type=text] {
+  width: 70%;
+  padding: 15px;
+  padding-left: 30px;
+  background-color: inherit;
+  border-style: none;
+}
+.search-bar input[type=submit] {
+  border-radius: inherit;
+  border-style: none;
+  background-color: inherit;
+  color: white;
+  font-size: 1.2em;
+}
+.search-bar :hover {
+  transition-property: background-color;
+  /* Active la transition sur background-color */
+  transition-duration: 0.5s;
+  /* La transition dure 1s */
+  background-color: white;
+  border-radius: inherit;
+}
+.search-bar :hover input[type=submit] {
+  color: black;
+}
+
+.articles {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-left: 3%;
+  margin-right: 3%;
+  margin-top: 30px;
+}
+.articles .cardGame {
+  width: 30%;
+  max-width: 30%;
+  margin: 1%;
+  border-radius: 14px;
+  background-color: #202020;
+}
+.articles .cardGame img {
+  width: 100%;
+  height: 55%;
+  border-top-left-radius: 14px;
+  border-top-right-radius: 14px;
+}
+.articles .cardGame h1 {
+  margin: 0;
+}
+.articles .cardGame .card-text {
+  padding-left: 15px;
+}
+.articles .cardGame .date {
+  text-align: right;
+  font-size: 15px;
 }
