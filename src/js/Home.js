@@ -27,7 +27,7 @@ const Home = (argument = "") => {
   // };
 
   const preparePage = (finalURL) => {
-    articles = [];
+    articles = "";
 
     const selectByPlatform = (jsonArticlePlatforms) => {
       let articlePlatforms = [];
@@ -45,13 +45,13 @@ const Home = (argument = "") => {
         console.log(response);
         response.results.forEach((article) => {
           if (selectByPlatform(article.platforms)) {
-            articles.push(`
+            articles += `
               <div class="cardGame">
                 <h1>${article.name}</h1>
                 <h2>${article.released}</h2>
                 <a href = "#gamedetail/${article.id}">${article.id}</a>
               </div>
-            `);
+            `;
           }
         });
         // articlesToDisplay = nineMore();
