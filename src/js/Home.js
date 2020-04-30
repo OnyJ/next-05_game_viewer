@@ -1,12 +1,33 @@
 let selectedPlatform = "";
+let articlesToDisplay = "";
+let articles = [];
+let visibleArticles = 0;
 const URL_MOST_WANTED_GAMES =
   "https://api.rawg.io/api/games?dates=2020-01-01,2021-10-10&ordering=-added";
 
 const Home = (argument = "") => {
   console.log("Page Home", argument);
 
+  const nineMore = () => {
+    let showMore = document.getElementById("show-more");
+    let i = visibleArticles;
+
+    if (visibleArticles > 21) {
+      showMore.hidden = true;
+      return;
+    }
+    showMore.hidden = false;
+
+    for (i; i < visibleArticles + 9; i++) {
+      console.log(articles[i]);
+      if (articles[i] !== undefined)
+        document.querySelector(".game-list .articles").innerHTML += articles[i];
+    }
+    visibleArticles += 9;
+  };
+
   const preparePage = (finalURL) => {
-    let articles = "";
+    articles = [];
 
     const selectByPlatform = (jsonArticlePlatforms) => {
       let articlePlatforms = [];
@@ -24,16 +45,17 @@ const Home = (argument = "") => {
         console.log(response);
         response.results.forEach((article) => {
           if (selectByPlatform(article.platforms)) {
-            articles += `
+            articles.push(`
               <div class="cardGame">
                 <h1>${article.name}</h1>
                 <h2>${article.released}</h2>
                 <a href = "#gamedetail/${article.id}">${article.id}</a>
               </div>
-            `;
+            `);
           }
         });
-        document.querySelector(".game-list .articles").innerHTML = articles;
+        articlesToDisplay = nineMore();
+        // document.querySelector(".game-list .articles").innerHTML = articles;
       });
   };
 
@@ -57,10 +79,12 @@ const Home = (argument = "") => {
           <option value="linux">Linux</option>
         </select>
         <div class="articles">Hey, this page is a GameList template, about : ${argument}</div>
+        <button id="show-more">Show More</button>
       </section>
     `;
     preparePage(URL_MOST_WANTED_GAMES);
     document.getElementById("filter").addEventListener("click", changePlatform);
+    document.getElementById("show-more").addEventListener("click", nineMore);
   };
   render();
 };
