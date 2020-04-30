@@ -26,6 +26,8 @@ const Search = () => {
     let argument = document.getElementsByTagName("input")[0].value;
     let cleanedArgument = argument.replace(/\s+/g, "-");
     preparePage(URL_SEARCH + cleanedArgument);
+
+    document.getElementsByTagName("input")[0].value = "";
   };
 
   document
