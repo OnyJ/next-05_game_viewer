@@ -8,23 +8,23 @@ const URL_MOST_WANTED_GAMES =
 const Home = (argument = "") => {
   console.log("Page Home", argument);
 
-  const nineMore = () => {
-    let showMore = document.getElementById("show-more");
-    let i = visibleArticles;
-
-    if (visibleArticles > 21) {
-      showMore.hidden = true;
-      return;
-    }
-    showMore.hidden = false;
-
-    for (i; i < visibleArticles + 9; i++) {
-      console.log(articles[i]);
-      if (articles[i] !== undefined)
-        document.querySelector(".game-list .articles").innerHTML += articles[i];
-    }
-    visibleArticles += 9;
-  };
+  // const nineMore = () => {
+  // let showMore = document.getElementById("show-more");
+  // let i = visibleArticles;
+  //
+  // if (visibleArticles > 21) {
+  // showMore.hidden = true;
+  // return;
+  // }
+  // showMore.hidden = false;
+  //
+  // for (i; i < visibleArticles + 9; i++) {
+  // console.log(articles[i]);
+  // if (articles[i] !== undefined)
+  // document.querySelector(".game-list .articles").innerHTML += articles[i];
+  // }
+  // visibleArticles += 9;
+  // };
 
   const preparePage = (finalURL) => {
     articles = [];
@@ -54,8 +54,8 @@ const Home = (argument = "") => {
             `);
           }
         });
-        articlesToDisplay = nineMore();
-        // document.querySelector(".game-list .articles").innerHTML = articles;
+        // articlesToDisplay = nineMore();
+        document.querySelector(".game-list .articles").innerHTML = articles;
       });
   };
 
@@ -84,7 +84,7 @@ const Home = (argument = "") => {
     `;
     preparePage(URL_MOST_WANTED_GAMES);
     document.getElementById("filter").addEventListener("click", changePlatform);
-    document.getElementById("show-more").addEventListener("click", nineMore);
+    // document.getElementById("show-more").addEventListener("click", nineMore);
   };
   render();
 };
