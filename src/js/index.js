@@ -1,5 +1,6 @@
 import "../scss/styles.scss";
 import routes from "./routes";
+import Search from "./Search";
 
 let pageArgument;
 
@@ -11,6 +12,8 @@ function setRoute() {
   routes[path[0]](pageArgument);
   return true;
 }
+
+Search();
 
 window.addEventListener("hashchange", () => setRoute());
 window.addEventListener("DOMContentLoaded", () => setRoute());

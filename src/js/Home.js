@@ -1,4 +1,3 @@
-const URL_SEARCH = "https://api.rawg.io/api/games?search=";
 const URL_MOST_WANTED_GAMES =
   "https://api.rawg.io/api/games?dates=2020-01-01,2021-10-10&ordering=-added";
 
@@ -26,28 +25,14 @@ const Home = (argument = "") => {
       });
   };
 
-  const searchGame = () => {
-    let argument = document.getElementsByTagName("input")[0].value;
-    let cleanedArgument = argument.replace(/\s+/g, "-");
-    preparePage(URL_SEARCH + cleanedArgument);
-  };
-
   const render = () => {
     pageContent.innerHTML = `
       <section class="game-list">
-        <div class="search-bar">
-          <form>
-            <input type="text" />
-            <input type="submit" id="submit-search" />
-          </form>
-        </div>
+        <!-- here was the search bar -->
         <div class="articles">Hey, this page is a GameList template, about : ${argument}</div>
       </section>
     `;
     preparePage(URL_MOST_WANTED_GAMES);
-    document
-      .getElementById("submit-search")
-      .addEventListener("click", searchGame);
   };
   render();
 };
