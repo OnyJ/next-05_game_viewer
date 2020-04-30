@@ -70,21 +70,43 @@ const Home = (argument = "") => {
   const render = () => {
     pageContent.innerHTML = `
       <section class="game-list">
-        <select id="filter">
-          <option value="">Platforms</option>
-          <option value="pc">PC</option>
-          <option value="xbox-one">Xbox One</option>
-          <option value="playstation4">Playstation 4</option>
-          <option value="nintendo-switch">Nintendo Switch</option>
-          <option value="ios">iOS</option>
-          <option value="android">Android</option>
-          <option value="macos">Mac OS</option>
-          <option value="linux">Linux</option>
+        <select id="filter" class="drop">
+          <option class="option active placeholder" value="">Platforms</option>
+          <option class="option" value="pc">PC</option>
+          <option class="option" value="xbox-one">Xbox One</option>
+          <option class="option" value="playstation4">Playstation 4</option>
+          <option class="option" value="nintendo-switch">Nintendo Switch</option>
+          <option class="option" value="ios">iOS</option>
+          <option class="option" value="android">Android</option>
+          <option class="option" value="macos">Mac OS</option>
+          <option class="option" value="linux">Linux</option>
         </select>
         <div class="articles">Hey, this page is a GameList template, about : ${argument}</div>
         <button id="show-more">Show More</button>
       </section>
     `;
+
+    // <div class="drop">
+    //   <div class="option active placeholder" data-value="placeholder">
+    //     Choose wisely
+    //   </div>
+    //   <div class="option" data-value="wow">
+    //     Wow!
+    //   </div>
+    //   <div class="option" data-value="drop">
+    //     So dropdown!
+    //   </div>
+    //   <div class="option" data-value="select">
+    //     Very select!
+    //   </div>
+    //   <div class="option" data-value="custom">
+    //     Much custom!
+    //   </div>
+    //   <div class="option" data-value="animation">
+    //     Such animation!
+    //   </div>
+    // </div>;
+
     preparePage(URL_MOST_WANTED_GAMES);
     document.getElementById("filter").addEventListener("click", changePlatform);
     // document.getElementById("show-more").addEventListener("click", nineMore);
