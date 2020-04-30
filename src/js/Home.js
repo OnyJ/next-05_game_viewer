@@ -8,23 +8,14 @@ const Home = (argument = "") => {
   const preparePage = (finalURL) => {
     let articles = "";
 
-    const selectByPlatform = (hardArticlePlatforms) => {
+    const selectByPlatform = (jsonArticlePlatforms) => {
       let articlePlatforms = [];
-      hardArticlePlatforms.forEach((platform) => {
+      jsonArticlePlatforms.forEach((platform) => {
         articlePlatforms.push(platform.platform.slug);
       });
-      console.log;
-      console.log(articlePlatforms);
       if (selectedPlatform === "") return true;
       return articlePlatforms.includes(selectedPlatform) ? true : false;
     };
-
-    // const findplatform = (platforms) => {
-    // platforms.forEach((platform) => {
-    // console.log(platform.platform.slug);
-    // });
-    // console.log(article.platforms[0].platform.slug);
-    // };
 
     fetch(`${finalURL}`)
       .then((response) => response.json())
@@ -33,8 +24,6 @@ const Home = (argument = "") => {
         console.log(response);
         response.results.forEach((article) => {
           if (selectByPlatform(article.platforms)) {
-            // console.log(article.platforms[0].platform.slug);
-
             articles += `
               <div class="cardGame">
                 <h1>${article.name}</h1>
